@@ -1,8 +1,9 @@
 package service
 
 import (
-	"icapeg/http-message"
+	http_message "icapeg/http-message"
 	"icapeg/logging"
+	"icapeg/service/services/blockexe"
 	"icapeg/service/services/clamav"
 	"icapeg/service/services/cloudmersive"
 	"icapeg/service/services/echo"
@@ -19,6 +20,7 @@ const (
 	VendorCloudMersive = "cloudmersive"
 	VendorGrayimages   = "grayimages"
 	VendorHashlookup   = "hashlookup"
+	VendorBlockexe     = "blockexe"
 )
 
 type (
@@ -46,6 +48,8 @@ func GetService(vendor, serviceName, methodName string, httpMsg *http_message.Ht
 		return grayimages.NewGrayimagesService(serviceName, methodName, httpMsg)
 	case VendorHashlookup:
 		return hashlookuppackage.NewHashlookupService(serviceName, methodName, httpMsg)
+	case VendorBlockexe:
+		return blockexe.NewBlockexeService(serviceName, methodName, httpMsg)
 	}
 
 	return nil
@@ -67,5 +71,7 @@ func InitServiceConfig(vendor, serviceName string) {
 		grayimages.InitGrayimagesConfig(serviceName)
 	case VendorHashlookup:
 		hashlookuppackage.InitHashlookupConfig(serviceName)
+	case VendorBlockexe:
+		blockexe.InitBlockexeConfig(serviceName)
 	}
 }
