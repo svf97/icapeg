@@ -76,7 +76,7 @@ reject_extensions = ["docx"]
 bypass_extensions = ["*"]
 scan_url = "https://www.virustotal.com/vtapi/v2/file/scan" #
 report_url = "https://www.virustotal.com/vtapi/v2/file/report" #
-api_key = "$_VIRUSTOTAL_API_KEY"
+api_key = "74ace8995c5a85eaee2d2c4d7fb9d86f8ebae8ba3bf1e8a54d17d4751dbc26b5"
 timeout  = 1000 #seconds , ICAP will return 408 - Request timeout
 #max file size value from 1 to 9223372036854775807, and value of zero means unlimited
 max_filesize = 0 #bytes
@@ -154,3 +154,23 @@ max_filesize = 0 #bytes
 return_original_if_max_file_size_exceeded=true
 return_400_if_file_ext_rejected=false
 
+[blockexe]
+## mandatory variables
+vendor = "blockexe"
+service_caption= "blockexe service"   
+service_tag = "blockexe ICAP"  
+req_mode=true 
+resp_mode=true 
+shadow_service=false
+preview_bytes = "1024" 
+preview_enabled = true
+process_extensions = ["*"] 
+reject_extensions = ["exe"]
+bypass_extensions = ["*"]
+## optional variables
+base_url = "" #
+scan_endpoint = ""
+api_key = ""
+timeout  = 300 
+fail_threshold = 2
+max_filesize = 0 
